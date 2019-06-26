@@ -7,6 +7,14 @@ import 'jest-dom/extend-expect';
 import Dashboard from './Dashboard';
 
 describe('<Dashboard />', () => {
+
+  it('matches snapshot', () => {
+    const tree = renderer.create(<Dashboard />); // generates a DOM tree
+
+    // snapshots are a JSON representation of the DOM tree
+    expect(tree.toJSON()).toMatchSnapshot();
+  });
+
   it('can close and lock the gate', () => {
     let { getByText, queryByText} = render(<Dashboard />)
  
